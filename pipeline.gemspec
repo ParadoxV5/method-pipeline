@@ -1,27 +1,25 @@
 # frozen_string_literal: true
-require_relative 'lib/mygem/version'
+require_relative 'lib/pipeline/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'mygem'
+  spec.name = 'pipeline'
   spec.summary = ''
-  spec.version = MyGem::VERSION
+  spec.version = Pipeline::VERSION
   spec.required_ruby_version = '>= 2'
   
   spec.author = 'ParadoxV5'
   spec.license = ''
-
-  github = 'https://github.com/ParadoxV5/mygem'
+  
+  github = 'https://github.com/ParadoxV5/ruby-pipeline'
   spec.metadata['source_code_uri'] = github
   spec.metadata['changelog_uri'] = "#{github}/commits"
   spec.metadata['bug_tracker_uri'] = "#{github}/issues"
   spec.metadata['documentation_uri'] =
     spec.metadata['homepage_uri'] =
-    spec.homepage = 'https://ParadoxV5.github.io/mygem/'
+    spec.homepage = 'https://ParadoxV5.github.io/ruby-pipeline/'
   
   spec.files = Dir['**/*']
   spec.require_paths = ['lib']
-  
-  #spec.add_dependency 'dependent_gem', '~> 2.1.0'
   
   spec.add_development_dependency 'rbs', '~> 2.8.0'
   spec.add_development_dependency 'steep', '~> 1.3.0'

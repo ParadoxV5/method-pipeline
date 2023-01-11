@@ -18,8 +18,8 @@ jobs:
         BUNDLE_RUBYGEMS__PKG__GITHUB__COM: Bearer:${{ github.token }}
     
     - name: Package Gem
-      run: bundle exec gem build --output mygem.gem mygem.gemspec
+      run: bundle exec gem build --output pipeline.gem pipeline.gemspec
     
     - name: Publish to GitHub Packages
-      run: bundle exec gem push --host https://rubygems.pkg.github.com/ParadoxV5 mygem.gem
+      run: bundle exec gem push --host https://rubygems.pkg.github.com/ParadoxV5 pipeline.gem
       env: {GEM_HOST_API_KEY: "Bearer ${{ github.token }}"}
