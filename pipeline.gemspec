@@ -25,6 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'steep', '~> 1.3.0'
   spec.add_development_dependency 'yard', '~> 0.9.0'
   spec.add_development_dependency 'commonmarker', '~> 0.23.0'
-  spec.add_development_dependency 'rspec-core', '~> 3.12.0'
-  spec.add_development_dependency 'rspec-expectations', '~> 3.12.0'
+  spec.add_development_dependency 'rspec', '~> 3.12.0'
 end
