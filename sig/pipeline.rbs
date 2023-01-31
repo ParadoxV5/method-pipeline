@@ -3,7 +3,7 @@ module Pipeline
 end
 
 class Object
-  def then_call: (?_ToProc? prc) -> untyped
+  def then_call: [X] (?_ToProc? prcs) -> X
   def !: () -> bool
        | (*_ToProc prcs) -> untyped
   

@@ -15,7 +15,5 @@ gems:
   ignore: true
 - name: commonmarker
   ignore: true
-- name: rspec-core
-  ignore: true
-- name: rspec-expectations
+- name: rspec
   ignore: true
