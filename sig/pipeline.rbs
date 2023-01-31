@@ -6,4 +6,7 @@ class Object
   def then_call: (?_ToProc? prc) -> untyped
   def !: () -> bool
        | (*_ToProc prcs) -> untyped
+  
+  def sys: (String) -> String
+  alias ` public_method
 end

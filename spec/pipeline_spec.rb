@@ -51,9 +51,12 @@ RSpec.describe Pipeline do
       expect { o.`('initialize') }.to raise_error(NameError)
     end
     
-    it 'renames Object#` (inherited from Kernel#`) to Object#sys' do
-      expect(Object).to be_private_method_defined(:sys)
-      expect(Object.instance_method(:sys)).to eq(Kernel.instance_method(:`))
+    it 'renames Object#` to Object#sys' do
+      meth = nil
+      expect { meth = Object.instance_method(:sys) }.not_to raise_error
+      expect(meth&.original_name).to eq(:`)
+      seed = Kernel.rand.to_s
+      expect(sys("echo #{seed}").chomp).to eq(seed) # verify functionality
     end
   end
   
