@@ -14,7 +14,7 @@ RSpec.describe Pipeline do
   
   describe '`#then_call` and `#!`' do
     it 'defines Object#then_call that invokes the given _ToProc with the receiver as arg' do
-      expect(Object).to be_public_method_defined(:then_call)
+      expect { Object.public_instance_method(:then_call) }.not_to raise_error
       receiver, proc_return = double('receiver'), double('return of proc')
       # It is neither required nor forbidden for `#then_call` and `#!` to
       # also pass their blocks to their _ToProc arg(s) (block-ception Lol)
@@ -31,7 +31,7 @@ RSpec.describe Pipeline do
     end
     
     it 'overrides Object#! with a vararg method that evaluates `o.!(f1, f2, …) as `o.then_call(f1).then_call(f2)…`' do
-      expect(Object.public_method(:!).arity).to be(-1)
+      expect(Object.public_instance_method(:!).arity).to be(-1)
       r1 = double('o.then_call(f1)', then_call: true)
       o = double('o', then_call: r1)
       f1, f2 = double('f1'), double('f2')
@@ -44,7 +44,7 @@ RSpec.describe Pipeline do
   
   describe '`#method` shorthand' do
     it 'overrides `backticks` with a public delegate to #public_method or equivalent' do
-      expect(Object).to be_public_method_defined(:`)
+      expect { Object.public_instance_method(:`) }.not_to raise_error
       o = double(echo: false)
       expect(o.`('echo')).to eq(o.public_method(:echo))
       expect(o.`('__id__')).to eq(o.public_method(:__id__))
