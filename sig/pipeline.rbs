@@ -1,11 +1,12 @@
 module Pipeline
   VERSION: String
+  
+  interface _Function
+    def to_proc: () -> ^(untyped) -> untyped
+  end
 end
-
 class Object
-  def then_call: [X] (?_ToProc? prcs) -> X
-  def !: () -> bool
-       | (*_ToProc prcs) -> untyped
+  def then_pipe: (*Pipeline::_Function prcs) -> untyped
   
   def sys: (String) -> String
   alias ` public_method
