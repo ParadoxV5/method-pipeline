@@ -1,7 +1,9 @@
 require_relative 'pipeline/version'
 
 module Pipeline; refine Object do
+  # @deprecated
   def then_call(prc = nil) = self.then(&prc)
+  # @deprecated
   def !(*prcs)
     if prcs.empty?
       super
