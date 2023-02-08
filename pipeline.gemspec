@@ -1,22 +1,21 @@
 # frozen_string_literal: true
-require_relative 'lib/pipeline/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'pipeline'
-  spec.summary = ''
+  spec.summary = '1.0.0-PRE'
   spec.version = Pipeline::VERSION
   spec.required_ruby_version = '~> 3.2'
   
   spec.author = 'ParadoxV5'
-  spec.license = ''
+  spec.license = 'UPL-1.0'
   
-  github = 'https://github.com/ParadoxV5/ruby-pipeline'
-  spec.metadata['source_code_uri'] = github
+  github = 
+    spec.homepage =
+    spec.metadata['homepage_uri'] =
+    spec.metadata['source_code_uri'] = 'https://github.com/ParadoxV5/ruby-pipeline'
   spec.metadata['changelog_uri'] = "#{github}/commits"
   spec.metadata['bug_tracker_uri'] = "#{github}/issues"
-  spec.metadata['documentation_uri'] =
-    spec.metadata['homepage_uri'] =
-    spec.homepage = 'https://ParadoxV5.github.io/ruby-pipeline/'
+  spec.metadata['documentation_uri'] = 'https://ParadoxV5.github.io/ruby-pipeline/'
   
   spec.files = Dir['**/*']
   spec.require_paths = ['lib']
