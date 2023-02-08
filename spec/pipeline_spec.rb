@@ -11,11 +11,11 @@ RSpec.describe Pipeline do
   using Pipeline
   
   describe '`#method` shorthand' do
-    it 'overrides `backticks` with a public delegate to #public_method or equivalent' do
+    it 'overrides `backticks` with a public delegate to #method or equivalent' do
       o = double(echo: false)
-      expect(o.`('echo')).to eq o.public_method(:echo)
-      expect(o.`('__id__')).to eq o.public_method(:__id__)
-      expect { o.`('initialize') }.to raise_error NameError
+      expect(o.`('echo')).to eq o.method(:echo)
+      expect(o.`(:__id__)).to eq o.method(:__id__)
+      expect { o.`(:initialize) }.not_to raise_error
     end
     
     it 'renames Object#` to Object#sys' do

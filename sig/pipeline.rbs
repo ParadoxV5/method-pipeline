@@ -9,5 +9,5 @@ class Object
   def then_pipe: (*Pipeline::_Function procs) -> untyped
   
   def sys: (String) -> String
-  alias ` public_method
+  alias ` method
 end
