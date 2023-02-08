@@ -2,8 +2,8 @@
 
 Gem::Specification.new do |spec|
   spec.name = 'pipeline'
-  spec.summary = '1.0.0-PRE'
-  spec.version = Pipeline::VERSION
+  spec.summary = ''
+  spec.version = '1.0.0-PRE'
   spec.required_ruby_version = '~> 3.2'
   
   spec.author = 'ParadoxV5'
