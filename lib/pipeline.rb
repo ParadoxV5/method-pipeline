@@ -1,7 +1,15 @@
 # The `Pipeline` Refinement module bundles a couple of methods that together
 # builds a clean and clever pure-Ruby solution to rightward method piping.
+# Check out [the README](index.html) for examples.
 # 
-# Consult [the README](index.html) for examples.
+# Reminder: activate a Refinement module with `using`:
+# ```ruby
+# using Pipeline
+# my_obj.then_pipe(…)
+# ```
+# Refinements are only active for the module/class block or file
+# (if top-level) that’s `using` them. See: `refinements.rdoc`
+# ([on docs.ruby-lang.org](https://docs.ruby-lang.org/en/master/syntax/refinements_rdoc.html))
 # 
 # @!method then_pipe(*procs)
 #   Yield `self` to the first `Proc` (or a `#to_proc` object) argument,
