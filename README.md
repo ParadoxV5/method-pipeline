@@ -1,7 +1,7 @@
-The `Pipeline` Refinement module bundles a couple of methods that together
-builds a clean and clever pure-Ruby solution to rightward method piping.
+The `Pipeline` Refinement module bundles a method duo that builds
+a clean and clever pure-Ruby solution to rightward method piping.
 
-A reminder that Refinement modules are activated with `using` and lasts only
+A reminder that Refinement modules are activated with `using` and last only
 for that module/class block or file (if top-level). See: `refinements.rdoc`
 ([on docs.ruby-lang.org](https://docs.ruby-lang.org/en/master/syntax/refinements_rdoc.html))
 
@@ -18,7 +18,7 @@ construct_url(arguments).
   then {|response| JSON.parse(response) }
 ```
 
-With the new Refinement active: (Oh gosh, this looks like a brand new language!)
+With the new Refinement active: (Oh gosh, this looks like a brand-new language!)
 ```ruby
 using Pipeline
 
@@ -49,14 +49,14 @@ STDOUT.puts(     # different-scope method
 ```
 
 The trending Rightward Operations improve readability –
-especially for long expressions like that one –
+especially for wordy expressions like the above –
 by matching English’s left-to-right writing direction.
 We currently accomplish this with `Object#then` and *light-weight Procs*:
 ```ruby
 input
-  .then { parse _1 }        
+  .then { parse _1 }
   .then { do_stuff.call _1 }
-  .then { STDOUT.puts _1 } 
+  .then { STDOUT.puts _1 }
 ```
 
 We alternatively can deconstruct the corresponding `#to_proc` objects with `&`:
@@ -69,8 +69,8 @@ input
 ```
 
 The Refinement module `Pipeline` introduces `Object#then_pipe` to
-eliminate repeating `then(&…)`. It gives a beautiful vibe similar
-to that of some other languages’ (namely Elixir) Pipe Operator `|>`.
+eliminate repeating `then(&…)`. It gives a beautiful vibe similar to
+that of the Pipe Operator `|>` in some other languages (namely Elixir).
 ```ruby
 using Pipeline
 
@@ -82,7 +82,7 @@ input.then_pipe(
 ```
 
 However, unlike Lisp-1 languages like Python or JavaScript,
-Lisp-2’s like Ruby face the additional challenge of namespace disambiguation.
+Lisp-2s like Ruby face the additional challenge of namespace disambiguation.
 Ruby solves it with the reflection methods `method` & co., but, as seen above,
 their verbosity makes them eyesores inside otherwise elegant syntax.
 Therefore, `Pipeline` further improves the grammar by replacing the `` `…` ``
@@ -103,7 +103,7 @@ input.then_pipe(
 * It is the backend of both `` `…` `` and `%x{…}` syntaxes –
   ``self.`:meth`` can instead be `%x:meth:` or `` `meth` ``.
 * A Ruby script is not (strictly) a Shell script. User system differences aside,
-  Summoning subshells should be the last resort when there’re no Ruby/Gem APIs.
+  summoning subshells should be the last resort when there are no Ruby/Gem APIs.
   Dedicating the `` ` `` char to subshells is a waste;
   e.g., you typically see `$(…)` in bash rather than `` `…` ``.
   `Pipeline` assigns `` #` `` a new and recurrent purpose; it also `alias`es
@@ -116,12 +116,12 @@ input.then_pipe(
   * This is a Ruby limitation – one can bypass visibilities with
     `Object#method` and `Method#call` regardless of this Refinement.
     A security engineer would love reflection APIs that respect visibilities.
-  * The original design for the new `` #` `` is to match `Object#public_method`,
+  * The original design for the new `` #` `` was to match `Object#public_method`,
     but it couldn’t retrieve oneself’s own `private` and `protected` methods.
-* **`#then_pipe` cannot pass additional arguments each step.**
+* **`#then_pipe` cannot pass additional arguments at each step.**
   * The current `Object#then`-based solution is as good as it can get –
-    There are no syntactical benefits to avoid a block whist calling rightwards.
-    Hey, (inner) blocks are accepted too, unlike `#then_pipe`.
+    There are no syntactical benefits to avoid a block while calling rightwards.
+    Hey, unlike `#then_pipe`, it welcomes (inner) blocks.
     ```ruby
     # a lambda – a Proc with fixed arities, unlike regula-o’ procs (or blocks)
     do_stuff = ->(a, o, z){ … }

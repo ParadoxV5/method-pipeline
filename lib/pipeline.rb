@@ -1,5 +1,5 @@
-# The `Pipeline` Refinement module bundles a couple of methods that together
-# builds a clean and clever pure-Ruby solution to rightward method piping.
+# The `Pipeline` Refinement module bundles a method duo that builds
+# a clean and clever pure-Ruby solution to rightward method piping.
 # Check out [the README](index.html) for examples.
 # 
 # Reminder: activate a Refinement module with `using`:
@@ -12,7 +12,7 @@
 # ([on docs.ruby-lang.org](https://docs.ruby-lang.org/en/master/syntax/refinements_rdoc.html))
 # 
 # @!method then_pipe(*procs)
-#   Yield `self` to the first `Proc` (or a `#to_proc` object) argument,
+#   Yield `self` to the first `Proc` (or `#to_proc` object) argument,
 #   then the result to the second argument, and so forth.
 #   ```ruby
 #   construct_url(arguments).then_pipe(
@@ -21,14 +21,14 @@
 #   )
 #   ```
 #   @param procs `Proc` or `#to_proc` objects to call
-#   @return the result of calling the last argument, or `self` if none given.
+#   @return The result of the last call, or `self` if no arguments were given.
 # 
 # @!method sys(command)
-#   Provides a replacement alias for `` Kernel#` ``, the subshell method.
+#   Provide a replacement alias for `` Kernel#` ``, the subshell method.
 #   @see #`
 # 
 # @!method `(name)
-#   Aliases `Object#method`.
+#   Alias `Object#method`.
 #   ```ruby
 #   m = 42.` :to_s
 #   m.call #=> "42"
