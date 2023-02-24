@@ -13,13 +13,10 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3'
-        bundler-cache: true
-      env:
-        BUNDLE_RUBYGEMS__PKG__GITHUB__COM: Bearer:${{ github.token }}
     
     - name: Package Gem
-      run: bundle exec gem build --output pipeline.gem pipeline.gemspec
+      run: gem build --output .gem *.gemspec
     
     - name: Publish to GitHub Packages
-      run: bundle exec gem push --host https://rubygems.pkg.github.com/ParadoxV5 pipeline.gem
+      run: gem push --host https://rubygems.pkg.github.com/ParadoxV5 .gem
       env: {GEM_HOST_API_KEY: "Bearer ${{ github.token }}"}
