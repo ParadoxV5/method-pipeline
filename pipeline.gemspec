@@ -3,7 +3,7 @@
 Gem::Specification.new do |spec|
   spec.name = 'pipeline'
   spec.summary = 'Pure-Ruby solution to method pipelines'
-  spec.version = '1.0.0'
+  spec.version = '1.0.1'
   spec.required_ruby_version = '~> 3.2'
   
   spec.author = 'ParadoxV5'
@@ -19,10 +19,4 @@ Gem::Specification.new do |spec|
   
   spec.files = Dir['**/*']
   spec.require_paths = ['lib']
-  
-  spec.add_development_dependency 'rbs', '~> 2.8.0'
-  spec.add_development_dependency 'steep', '~> 1.3.0'
-  spec.add_development_dependency 'yard', '~> 0.9.0'
-  spec.add_development_dependency 'commonmarker', '~> 0.23.0'
-  spec.add_development_dependency 'rspec', '~> 3.12.0'
 end
