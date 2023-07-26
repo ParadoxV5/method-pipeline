@@ -6,7 +6,7 @@ gemspec
 group :development do
   group :type_check do
     gem 'rbs', '~> 3.1.0', require: false
-    gem 'steep', '~> 1.4.0', require: false
+    gem 'steep', '~> 1.5.0', require: false
   end
   group :documentation do
     gem 'yard', '~> 0.9.0', require: false

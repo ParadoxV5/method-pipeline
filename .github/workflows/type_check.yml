@@ -19,8 +19,6 @@ jobs:
       with:
         ruby-version: '3'
         bundler-cache: true
-      env:
-        BUNDLE_RUBYGEMS__PKG__GITHUB__COM: Bearer:${{ github.token }}
     
     - name: Collect RBS
       run: bundle exec rbs collection install
