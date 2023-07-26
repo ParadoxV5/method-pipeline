@@ -1,22 +1,24 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.name = 'pipeline'
+  spec.name = 'method-pipeline'
   spec.summary = 'Pure-Ruby solution to method pipelines'
-  spec.version = '1.0.2'
-  spec.required_ruby_version = '~> 3.2'
-  
+  spec.version = '1.0.3'
   spec.author = 'ParadoxV5'
   spec.license = 'UPL-1.0'
   
-  github = 
-    spec.homepage =
-    spec.metadata['homepage_uri'] =
-    spec.metadata['source_code_uri'] = 'https://github.com/ParadoxV5/ruby-pipeline'
-  spec.metadata['changelog_uri'] = "#{github}/commits"
-  spec.metadata['bug_tracker_uri'] = "#{github}/issues"
-  spec.metadata['documentation_uri'] = 'https://ParadoxV5.github.io/ruby-pipeline/'
+
+  github_account = spec.author
+  github = File.join 'https://github.com', github_account, spec.name
+  spec.homepage = github
+  spec.metadata = {
+    'homepage_uri'      => spec.homepage,
+    'source_code_uri'   => github,
+    'changelog_uri'     => File.join(github, 'releases'),
+    'bug_tracker_uri'   => File.join(github, 'issues'),
+    'documentation_uri' => File.join('https://rubydoc.info/gems', spec.name)
+  }
   
   spec.files = Dir['**/*']
-  spec.require_paths = ['lib']
+  spec.required_ruby_version = '~> 3.2'
 end

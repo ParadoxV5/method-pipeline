@@ -1,28 +1,31 @@
-name: Test with RSpec
+name: Test with Minitest
 on:
   push:
-    branches: [main]
-    paths: [lib/**, spec/**]
+    paths: [.github/workflows/test.yml, lib/**, test/**, '*.gemspec']
   pull_request:
-    branches: [main]
-    paths: [lib/**, spec/**]
+    paths: [.github/workflows/test.yml, lib/**, test/**, '*.gemspec']
 jobs:
   
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        ruby-version: ['3', '3.0']
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 5
     steps:
-
+    
     - uses: actions/checkout@v3
       with:
         submodules: recursive
-
+    
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3'
+        ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
       env:
         BUNDLE_RUBYGEMS__PKG__GITHUB__COM: Bearer:${{ github.token }}
     
-    - name: Test with RSpec
-      run: bundle exec rspec
+    - name: Test with Minitest
+      run: bundle exec rake test:isolated

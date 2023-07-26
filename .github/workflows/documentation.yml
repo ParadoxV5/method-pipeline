@@ -1,8 +1,8 @@
-name: GitHub Pages
+name: Generate Documentation with YARD
 on:
-  push: 
+  push:
     branches: [main]
-    paths: [lib/**]
+    paths: [.github/workflows/documentation.yml, lib/**, README.md]
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -23,8 +23,6 @@ jobs:
       with:
         ruby-version: '3'
         bundler-cache: true
-      env:
-        BUNDLE_RUBYGEMS__PKG__GITHUB__COM: Bearer:${{ github.token }}
     
     - name: Package YARD
       run: bundle exec yard doc
